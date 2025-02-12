@@ -18,8 +18,9 @@ struct MenuView: View {
                     NavigationLink(destination: SuperheroFinder()) {
                         Text("Superhero finder")
                     }
-                    Text("App 3")
-                    Text("App 4")
+                    NavigationLink(destination: FavPlaces()){
+                        Text("Fav Places")
+                    }
                 }
             }.listStyle(.grouped)
         }
