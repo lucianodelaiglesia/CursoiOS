@@ -71,15 +71,15 @@ struct FavPlaces: View {
             if showPopUp != nil{
                 
                 let view = VStack{
-                    Text("Añadir localización").font(.title2).bold()
+                    Text("Add location").font(.title2).bold()
                     Spacer()
-                    TextField("Nombre", text: $name)
+                    TextField("Name", text: $name)
                         .padding(.bottom, 8)
                         .keyboardType(.default)
-                    Toggle("Es un lugar favorito?", isOn: $fav)
+                    Toggle("Is it a favorite place?", isOn: $fav)
                     Spacer()
                     if name != "" {
-                        Button("Guardar"){
+                        Button("Save"){
                             savePlace(
                                 name: name,
                                 fav: fav,
@@ -88,7 +88,7 @@ struct FavPlaces: View {
                             clearForm()
                         }
                     } else {
-                        Button("Guardar"){}.disabled(true)
+                        Button("Save"){}.disabled(true)
                     }
                 }
                 

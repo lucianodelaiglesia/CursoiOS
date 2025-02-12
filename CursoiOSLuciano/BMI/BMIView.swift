@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct IMCView: View {
+struct BMIView: View {
     @State var gender: Int = 0
     @State var height: Double = 150
     @State var age: Int = 18
@@ -16,34 +16,34 @@ struct IMCView: View {
     var body: some View {
         VStack{
             HStack {
-                ToggleButton(text: "Hombre", imageName: "figure.arms.open", gender: 0, selectedGender: $gender)
-                ToggleButton(text: "Mujer", imageName: "figure.stand.dress", gender: 1, selectedGender: $gender)
+                ToggleButton(text: "Male", imageName: "figure.arms.open", gender: 0, selectedGender: $gender)
+                ToggleButton(text: "Female", imageName: "figure.stand.dress", gender: 1, selectedGender: $gender)
             }
             HeightCalculator(selectedHeight: $height)
             HStack{
-                CounterButton(text: "Edad", number: $age)
-                CounterButton(text: "Peso", number: $weight)
+                CounterButton(text: "Age", number: $age)
+                CounterButton(text: "Weight", number: $weight)
             }
-            IMCCalculateButton(userWeight: Double(weight), userHeight: height)
+            BMICalculateButton(userWeight: Double(weight), userHeight: height)
         }.frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(.backgroundApp)
-            .navigationTitle("IMC Calculator")
+            .navigationTitle("BMI Calculator")
             .toolbar{
                 ToolbarItem(placement: .principal){
-                    Text("IMC Calculator").bold().foregroundColor(.white)
+                    Text("BMI Calculator").bold().foregroundColor(.white)
                 }
             }
     }
 }
 
-struct IMCCalculateButton: View {
+struct BMICalculateButton: View {
     let userWeight: Double
     let userHeight: Double
     
     var body: some View {
         NavigationStack{
-            NavigationLink(destination: {IMCResult(userWeight: userWeight, userHeight: userHeight)}){
-                Text("Calcular")
+            NavigationLink(destination: {BMIResult(userWeight: userWeight, userHeight: userHeight)}){
+                Text("Calculate")
                     .font(.title)
                     .bold()
                     .foregroundColor(.purple)
@@ -97,7 +97,7 @@ struct HeightCalculator : View {
     
     var body: some View {
         VStack{
-            TitleText(text: "Altura")
+            TitleText(text: "Height")
             Slider(value: $selectedHeight, in: 100...220, step: 1)
                 .accentColor(.purple)
                 .padding(.horizontal, 16)
@@ -157,5 +157,5 @@ struct CounterButton: View {
 }
 
 #Preview {
-    IMCView()
+    BMIView()
 }

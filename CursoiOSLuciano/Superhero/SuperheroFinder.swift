@@ -16,7 +16,7 @@ struct SuperheroFinder: View {
         VStack{
             TextField("",
                       text: $superheroName,
-                      prompt: Text("Busca tu superheroe favorito").bold().font(.title2).foregroundColor(.gray))
+                      prompt: Text("Search your favorite Superhero").bold().font(.title2).foregroundColor(.gray))
             .bold()
             .font(.title2)
             .foregroundColor(.white)

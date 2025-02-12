@@ -7,21 +7,21 @@
 
 import SwiftUI
 
-struct IMCResult: View {
+struct BMIResult: View {
     let userWeight: Double
     let userHeight: Double
     
     var body: some View {
         VStack{
-            Text("Tu resultado").font(.title).bold().foregroundColor(.white)
-            let result = calculateImc(weight: userWeight, height: userHeight)
+            Text("Your result").font(.title).bold().foregroundColor(.white)
+            let result = calculateBmi(weight: userWeight, height: userHeight)
             InformationView(result: result)
         }.frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(.backgroundApp)
     }
 }
 
-func calculateImc(weight: Double, height: Double) -> Double {
+func calculateBmi(weight: Double, height: Double) -> Double {
     let result = weight/((height/100)*(height/100))
     
     return result
@@ -31,7 +31,7 @@ struct InformationView: View {
     let result: Double
     
     var body: some View {
-        let information = getImcResult(result: result)
+        let information = getBmiResult(result: result)
         
         VStack{
             Spacer()
@@ -58,31 +58,31 @@ struct InformationView: View {
     }
 }
 
-func getImcResult(result: Double) -> (String, String, Color) {
+func getBmiResult(result: Double) -> (String, String, Color) {
     let title: String
     let description: String
     let color: Color
     
     switch result{
     case 0.00...19.99:
-        title = "Peso Bajo"
-        description = "Estás por debajo del peso recomendado según el IMC."
+        title = "Low Weight"
+        description = "You are below the recommended weight according to BMI."
         color = Color.yellow
     case 20.00...24.99:
-        title = "Peso Normal"
-        description = "Estás en el peso recomendado según el IMC."
+        title = "Normal Weight"
+        description = "You are at the recommended weight according to BMI."
         color = Color.green
     case 25.00...29.00:
-        title = "Sobrepeso"
-        description = "Estás por encima del peso recomendado según el IMC."
+        title = "Overweight"
+        description = "You are above the recommended weight according to BMI."
         color = Color.orange
     case 30.00...100:
-        title = "Obesidad"
-        description = "Estás muy por encima del peso recomendado según el IMC."
+        title = "Obesity"
+        description = "You are well above the recommended weight according to BMI."
         color = Color.red
     default:
         title = "ERROR"
-        description = "Ha ocurrido un error"
+        description = "An error has occurred"
         color = Color.gray
     }
     

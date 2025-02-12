@@ -12,14 +12,14 @@ struct MenuView: View {
         NavigationStack{
             List {
                 Section(header: Text("Apps List")){
-                    NavigationLink(destination:IMCView()){
-                        Text("IMC Calculator")
+                    NavigationLink(destination:BMIView()){
+                        Text("BMI Calculator")
                     }
                     NavigationLink(destination: SuperheroFinder()) {
                         Text("Superhero finder")
                     }
                     NavigationLink(destination: FavPlaces()){
-                        Text("Fav Places")
+                        Text("Favorite Places")
                     }
                 }
             }.listStyle(.grouped)
